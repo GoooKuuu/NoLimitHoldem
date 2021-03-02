@@ -89,14 +89,18 @@ class NolimitholdemRound():
             self.not_raise_num = 1
 
         elif action == Action.RAISE_POT:
-            self.raised[self.game_pointer] += self.dealer.pot
-            player.bet(chips=self.dealer.pot)
+            diff = max(self.raised) - self.raised[self.game_pointer]
+            self.dealer.pot += diff
+            self.raised[self.game_pointer] += (diff + self.dealer.pot)
+            player.bet(chips=(self.dealer.pot+diff))
             self.not_raise_num = 1
 
         elif action == Action.RAISE_HALF_POT:
+            diff = max(self.raised) - self.raised[self.game_pointer]
+            self.dealer.pot += diff
             quantity = int(self.dealer.pot / 2)
-            self.raised[self.game_pointer] += quantity
-            player.bet(chips=quantity)
+            self.raised[self.game_pointer] += (quantity + diff)
+            player.bet(chips=(quantity+diff))
             self.not_raise_num = 1
 
         elif action == Action.FOLD:
