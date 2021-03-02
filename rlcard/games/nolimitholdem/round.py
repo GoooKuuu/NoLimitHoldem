@@ -141,7 +141,7 @@ class NolimitholdemRound():
             full_actions.remove(Action.CHECK)
 
         # If the current player has put in the chips that are more than others, we can not call
-        if self.raised[self.game_pointer] == max(self.raised):
+        if self.raised[self.game_pointer] >= max(self.raised):
             full_actions.remove(Action.CALL)
 
         player = players[self.game_pointer]
