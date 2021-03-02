@@ -79,9 +79,9 @@ class NolimitholdemGame(Game):
         self.public_cards = []
         self.stage = Stage.PREFLOP
 
-        # Big blind and small blind
-        s = (self.dealer_id + 1) % self.num_players
-        b = (self.dealer_id + 2) % self.num_players
+        # Big blind and small blind (dealer)
+        s = self.dealer_id
+        b = (self.dealer_id + 1) % self.num_players
         self.players[b].bet(chips=self.big_blind)
         self.players[s].bet(chips=self.small_blind)
 
