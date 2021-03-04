@@ -66,6 +66,7 @@ class Env(object):
 
         # Load pre-trained models if single_agent_mode=True
         if self.single_agent_mode:
+            #首先载入模型
             self.model = self._load_model()
             # If at least one pre-trained agent needs raw data, we set self.allow_raw_data = True
             for agent in self.model.agents:
@@ -83,6 +84,7 @@ class Env(object):
         Call `_init_game` if not in single agent mode
         '''
         if not self.single_agent_mode:
+            #即没有内置预训练模型的时候
             return self._init_game()
 
         while True:

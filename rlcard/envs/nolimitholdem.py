@@ -115,4 +115,11 @@ class NolimitholdemEnv(Env):
         state['legal_actions'] = self.game.get_legal_actions()
         return state
 
+    def _load_model(self):
+        ''' Load pretrained/rule model
 
+        Returns:
+            model (Model): A Model object
+        '''
+        from rlcard import models
+        return models.load('nolimit-holdem-random')
