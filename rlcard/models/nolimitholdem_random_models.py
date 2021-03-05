@@ -2,6 +2,7 @@
 '''
 import rlcard
 from rlcard.models.model import Model
+import numpy as np
 
 class NoLimitholdemRandomAgent(object):
     ''' NoLimit Hold 'em Random agent
