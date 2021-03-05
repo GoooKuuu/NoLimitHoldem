@@ -117,9 +117,9 @@ class NolimitholdemEnv(Env):
 
     def _load_model(self):
         ''' Load pretrained/rule model
-
         Returns:
             model (Model): A Model object
         '''
         from rlcard import models
-        return models.load('nolimit-holdem-random')
+        #return models.load('nolimit-holdem-random')
+        return models.load('nolimit-holdem-call')

@@ -43,3 +43,7 @@ register(
 register(
     model_id = 'nolimit-holdem-random',
     entry_point='rlcard.models.nolimitholdem_random_models:NoLimitholdemRandomModel')
+
+register(
+    model_id = 'nolimit-holdem-call',
+    entry_point='rlcard.models.nolimitholdem_call_models:NoLimitholdemCallModel')
