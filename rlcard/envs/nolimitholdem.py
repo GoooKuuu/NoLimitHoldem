@@ -122,4 +122,4 @@ class NolimitholdemEnv(Env):
         '''
         from rlcard import models
         #return models.load('nolimit-holdem-random')
-        return models.load('nolimit-holdem-call')
+        return models.load('nolimit-holdem-hm')
