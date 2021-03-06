@@ -63,3 +63,7 @@ register(
 register(
     model_id = 'nolimit-holdem-sl',
     entry_point='rlcard.models.nolimitholdem_sl_models:NoLimitholdemScaredLimperModel')
+
+register(
+    model_id = 'nolimit-holdem-ta',
+    entry_point='rlcard.models.nolimitholdem_ta_models:NoLimitholdemTightAggressiveModel')
