@@ -1,6 +1,6 @@
 '''
 NoLimit Hold 'em rule model
-TightAggressive 会有一定概率的bluff
+TightPassive 对于大部分‘好’牌都call，大部分牌fold, 很少raise
 
 '''
 import rlcard
@@ -19,10 +19,10 @@ RAISE_POT = 4
 ALL_IN = 5
 '''
 
-hand_strength_band_high = 100     # 用于调整手牌阈值
-hand_strength_band_low = -100
+hand_strength_band_high = 500     # 用于调整手牌阈值
+hand_strength_band_low = 100
 
-bluffing_rate = 0.2  #弱牌bluffing的概率
+
 
 def card_transform(cards):
     '''
@@ -41,12 +41,6 @@ def get_action(state, hand_strength):
     #action = get_action(state, hand_strength)
     legal_actions = state['raw_legal_actions']
     if hand_strength < hand_strength_band_low:
-        #弃牌或者诈唬
-        rand_num = np.random.uniform(0, 1)
-        if (rand_num < bluffing_rate) and (Action.RAISE_HALF_POT in legal_actions):
-            if Action.RAISE_POT in legal_actions:
-                action = np.random.choice([Action.RAISE_HALF_POT,Action.RAISE_POT])
-                return action
         return Action.FOLD
     elif hand_strength < hand_strength_band_high:
         if Action.CALL in legal_actions:
@@ -65,7 +59,7 @@ def get_action(state, hand_strength):
         else:
             return Action.CHECK
 
-class NoLimitholdemTightAggressiveAgent(object):
+class NoLimitholdemTightPassiveAgent(object):
     ''' NoLimit Hold 'em Random agent
     '''
 
@@ -98,7 +92,7 @@ class NoLimitholdemTightAggressiveAgent(object):
         '''
         return self.step(self,state), []
 
-class NoLimitholdemTightAggressiveModel(Model):
+class NoLimitholdemTightPassiveModel(Model):
     ''' NoLimitholdem Random Model
     '''
 
@@ -107,7 +101,7 @@ class NoLimitholdemTightAggressiveModel(Model):
         '''
         env = rlcard.make('no-limit-holdem')
 
-        rule_agent = NoLimitholdemTightAggressiveAgent()
+        rule_agent = NoLimitholdemTightPassiveAgent()
         self.rule_agents = [rule_agent for _ in range(env.player_num)]
         #两个位置都设置为了rule
 
