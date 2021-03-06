@@ -55,3 +55,7 @@ register(
 register(
     model_id = 'nolimit-holdem-la',
     entry_point='rlcard.models.nolimitholdem_la_models:NoLimitholdemLooseAggressiveModel')
+
+register(
+    model_id = 'nolimit-holdem-lp',
+    entry_point='rlcard.models.nolimitholdem_lp_models:NoLimitholdemLoosePassiveModel')

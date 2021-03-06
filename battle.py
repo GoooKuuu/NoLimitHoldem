@@ -1,7 +1,8 @@
 from rlcard.envs.registration import register, make
 import numpy as np
+import time
 
-
+start = time.time()
 battle_number = 100000
 Reward = 0
 for _ in range(battle_number):
@@ -21,4 +22,6 @@ for _ in range(battle_number):
         if done:
             Reward += reward
             break
-print('the average payoff of {} battles Vs random opponent:{}'.format(battle_number,Reward/battle_number))
+end = time.time()
+print('the average payoff of {} battles LP Vs random opponent:{}'.format(battle_number,Reward/battle_number))
+print('time is：',end-start)
