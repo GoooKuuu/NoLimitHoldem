@@ -23,5 +23,5 @@ for _ in range(battle_number):
             Reward += reward
             break
 end = time.time()
-print('the average payoff of {} battles LP Vs random opponent:{}'.format(battle_number,Reward/battle_number))
+print('the average payoff of {} battles SL Vs random opponent:{}'.format(battle_number,Reward/battle_number))
 print('time is：',end-start)
